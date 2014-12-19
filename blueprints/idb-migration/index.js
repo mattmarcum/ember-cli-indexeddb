@@ -1,5 +1,5 @@
 module.exports = {
-  description: ''
+    description: 'Create a migration for IndexedDB.',
 
   // locals: function(options) {
   //   // Return custom template variables here.

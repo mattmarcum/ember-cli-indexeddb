@@ -1,6 +1,7 @@
-import initialize from 'ember-cli-idexeddb/initializers/indexeddb.js'
+import { initialize } from 'ember-cli-indexeddb/initializers/indexeddb'
 
 export default {
-  name: 'indexeddb',
-  initialize: initialize
+    name: 'ember-cli-indexeddb',
+    initialize: initialize,
+    after:      "ember-data",
 };

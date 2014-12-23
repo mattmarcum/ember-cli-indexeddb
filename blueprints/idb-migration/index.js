@@ -1,14 +1,11 @@
 module.exports = {
     description: 'Create a migration for IndexedDB.',
+    normalizeEntityName: function( name ) {
+        return 'blah';
+    },
+    /*
+    1. figure out what the current migration version is
+    2.
+     */
 
-  // locals: function(options) {
-  //   // Return custom template variables here.
-  //   return {
-  //     foo: options.entity.options.foo
-  //   };
-  // }
-
-  // afterInstall: function(options) {
-  //   // Perform extra work here.
-  // }
 };

@@ -1,0 +1,5 @@
+For the migration system I wanted each migration to be in its own separate file, which means that each migration would be in its own module.  
+
+Requirement 1.  Be able to load 0..N of possible migration modules and execute them in order.
+
+So far there is no defined api for searching for es6 modules as far as I can [tell](http://www.2ality.com/2014/09/es6-modules-final.html).  If the loader api gets extended that that would be great.  Today we have two options in ember-cli: we can either search`require.entries` (the amd style loader that ember-cli uses) at run time and try to find all the migration modules or we can use our build tools to hard code our list of migration modules into our initializer.  I opted for option 2.  It seems more correct in my opinion and more future proof.  If the es6 module loader api gets extended to support listing and searching of available modules then we can definitely implement that in the future, but for now we'll rely on the ember-cli generator functions to help us out.

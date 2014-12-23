@@ -5,7 +5,7 @@ export default function makeInitializer( migrationsArray ){
     return function( container, application ) {
 
         var getMigrations = function( migrations ){
-                var migrations = migrations.sort( function( a, b ){
+                migrations = migrations.sort( function( a, b ){
                         var aVer = a.get( 'version' ),
                             bVer = b.get( 'version' );
 
@@ -32,11 +32,10 @@ export default function makeInitializer( migrationsArray ){
                         migrationsToRun      = migrations.filter(
                             function( migration ){
                                 //filter just the migrations that are needed
-                                return ( migration.version > IDBVersion
-                                    && migration.version <= appDBVersion );
+                                return ( migration.version > IDBVersion &&
+                                    migration.version <= appDBVersion );
                             }),
-                        db = event.target.result,
-                        transaction;
+                        db = event.target.result;
 
                     Ember.assert( 'IndexedDB Initializer: an `upgradeneeded`'+
                         'even was triggered, but we could not find any '+
@@ -47,7 +46,7 @@ export default function makeInitializer( migrationsArray ){
                     db.onerror = function(event) {
                         Ember.Error( 'IndexedDB Initializer: An error occurred'+
                         ' while trying to upgrade IndexedDB:', event );
-                    }
+                    };
 
                     console.log( 'ecidb:rungMigrations - event:', event );
                     console.log( 'migrations:', migrations );

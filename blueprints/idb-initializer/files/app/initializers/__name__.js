@@ -1,10 +1,8 @@
 import makeInitializer from 'ember-cli-indexeddb/initializers/indexeddb';
-
-var migrationArray = [
-];
+import migrations from 'migrations/migration-manager';
 
 export default {
     name:       'ember-cli-indexeddb',
-    initialize: makeInitializer( migrationArray ),
+    initialize: makeInitializer( migrations ),
     after:      "ember-data",
 };

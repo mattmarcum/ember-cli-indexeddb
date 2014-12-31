@@ -37,5 +37,8 @@
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "dependencies": {
+    "fs-extra": "~0.13.0"
   }
 }

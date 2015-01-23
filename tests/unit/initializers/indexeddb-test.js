@@ -1,23 +1,23 @@
+/* jshint expr:true */
 import Ember from 'ember';
 import { initialize } from 'ember-cli-indexeddb/initializers/indexeddb';
 
-var container, application;
+describe('IndexeddbInitializer', function() {
+  var container, application;
 
-module('IndexeddbInitializer', {
-  setup: function() {
+  beforeEach(function() {
     Ember.run(function() {
+      container = new Ember.Container();
       application = Ember.Application.create();
-      container = application.__container__;
       application.deferReadiness();
     });
-  }
+  });
+
+  // Replace this with your real tests.
+  it('works', function() {
+    initialize(container, application);
+
+    // you would normally confirm the results of the initializer here
+    expect(true).to.be.ok;
+  });
 });
-
-// Replace this with your real tests.
-test('it works', function() {
-  initialize(container, application);
-
-  // you would normally confirm the results of the initializer here
-  ok(true);
-});
-

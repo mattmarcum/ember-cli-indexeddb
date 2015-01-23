@@ -11,8 +11,8 @@ module.exports = {
 
     availableOptions: [
         { name: 'databaseName' },
-        { name: 'adapter', default: 'application' },
-        { name: 'migration', default: 'initial-migration' }
+        { name: 'adapter', "default": 'application' },
+        { name: 'migration', "default": 'initial-migration' }
     ],
 
     normalizeEntityName: function() {
@@ -26,7 +26,7 @@ module.exports = {
 
         return Promise.resolve().then(function(){
             var blueprint = Blueprint.lookup( 'idb-initializer', {
-                paths: options.project.blueprintLookupPaths(),
+                paths: options.project.blueprintLookupPaths()
             });
 
             return Promise.resolve().then(function(){
@@ -34,7 +34,7 @@ module.exports = {
             });
         }).then(function(){
             var blueprint = Blueprint.lookup( 'idb-migration', {
-                paths: options.project.blueprintLookupPaths(),
+                paths: options.project.blueprintLookupPaths()
             });
 
             options.entity.name = options.migration || 'initial-migration';
@@ -44,7 +44,7 @@ module.exports = {
             });
         }).then(function(){
             var blueprint = Blueprint.lookup( 'idb-adapter', {
-                paths: options.project.blueprintLookupPaths(),
+                paths: options.project.blueprintLookupPaths()
             });
 
             options.entity.name = options.migration || 'application';

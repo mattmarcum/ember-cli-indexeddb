@@ -1,15 +1,21 @@
+/* jshint expr:true */
 import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+  describeModule,
+  it
+} from 'ember-mocha';
 
-moduleFor('adapter:indexeddb-adapter', 'IndexeddbAdapterAdapter', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
-});
-
-// Replace this with your real tests.
-test('it exists', function() {
-  var adapter = this.subject();
-  ok(adapter);
-});
+describeModule(
+  'adapter:indexeddb-adapter',
+  'IndexeddbAdapterAdapter',
+  {
+    // Specify the other units that are required for this test.
+    // needs: ['serializer:foo']
+  },
+  function() {
+    // Replace this with your real tests.
+    it('exists', function() {
+      var adapter = this.subject();
+      expect(adapter).to.be.ok;
+    });
+  }
+);

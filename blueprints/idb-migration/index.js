@@ -19,6 +19,7 @@ module.exports = {
           })
         .then(function( versionNumber ){
           console.log('version number is :', versionNumber);
+          options.version = versionNumber;
         });
       return Promise;
     }

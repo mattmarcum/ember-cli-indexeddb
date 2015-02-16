@@ -7,7 +7,8 @@ module.exports = {
     2. load in migration manager via es6-module-loader
      */
 
-    install: function( options ){
+    beforeInstall: function( options, locals ){
+      console.log('before install', locals);
       var Promise = System
         .import('app/migrations/migration-manager')
         .then( 
@@ -23,4 +24,20 @@ module.exports = {
         });
       return Promise;
     }
+    // move into beforeInstall - modify locals to have this file map
+    // fileMapTokens: function( options ){
+    //   console.log('filemaptokes');
+    //   return {
+    //     __name__: function(options){
+    //       var version = options.version.toString(),
+    //           pad = 4 - version.length;
+
+    //       while(pad){
+    //         version = '0'+version;
+    //         pad--;
+    //       }
+    //       return version+'-'+options.entity.name;
+    //     }
+    //   }
+    // }
 };

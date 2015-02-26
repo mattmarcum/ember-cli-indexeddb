@@ -28,7 +28,7 @@ export default function makeInitializer( migrationsArray ){
 
             makeMigrationRunner = function( migrations, appDBVersion ){
                 return function( event ){
-                    var IDBVersion          = event.oldVersion,
+                    var IDBVersion           = event.oldVersion,
                         migrationsToRun      = migrations.filter(
                             function( migration ){
                                 //filter just the migrations that are needed

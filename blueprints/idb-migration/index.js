@@ -8,7 +8,6 @@ module.exports = {
      */
 
     beforeInstall: function( options, locals ){
-      console.log('before install', locals);
       var Promise = System
         .import('app/migrations/migration-manager')
         .then( 
@@ -20,24 +19,20 @@ module.exports = {
           })
         .then(function( versionNumber ){
           console.log('version number is :', versionNumber);
-          options.version = versionNumber;
+          var version = versionNumber.toString(), 
+              pad = 4 - version.length;
+
+          while(pad){
+            version = '0'+version;
+            pad--;
+          }
+
+          locals.version = versionNumber;
+          locals.fileMap.__name__ = version+'-'+options.entity.name
         });
       return Promise;
+    },
+    afterInstall: function( options, locals ){
+      console.log('after install', locals);
     }
-    // move into beforeInstall - modify locals to have this file map
-    // fileMapTokens: function( options ){
-    //   console.log('filemaptokes');
-    //   return {
-    //     __name__: function(options){
-    //       var version = options.version.toString(),
-    //           pad = 4 - version.length;
-
-    //       while(pad){
-    //         version = '0'+version;
-    //         pad--;
-    //       }
-    //       return version+'-'+options.entity.name;
-    //     }
-    //   }
-    // }
 };

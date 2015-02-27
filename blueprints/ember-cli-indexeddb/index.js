@@ -21,7 +21,7 @@ module.exports = {
         // to us
     },
 
-    install: function( options ){
+    afterInstall: function( options ){
         this.project = options.project;
 
         return Promise.resolve().then(function(){

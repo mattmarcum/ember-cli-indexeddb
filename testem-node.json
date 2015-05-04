@@ -1,0 +1,14 @@
+{
+  "framework": "mocha",
+  "launch_in_ci": [
+    "node"
+  ],
+  "launch_in_dev": [
+    "node"
+  ],
+  "launchers": {
+    "node": {
+      "command": "node tests/runner.js"
+    }
+  }
+}

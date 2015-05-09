@@ -1,5 +1,5 @@
 export default {
-    version: <%= version %>,
+    version: <%= versionNumber %>,
     migrate: function( db ){
     }
 };

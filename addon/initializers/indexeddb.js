@@ -15,7 +15,7 @@ export default function makeInitializer( migrationsArray ){
                     });
 
                 Ember.assert( 'IndexedDB Initializer: You have not defined any'+
-                    'migrations.  Run `ember generate migration '+
+                    'migrations.  Run `ember generate idb-migration '+
                     '--name=<migration-name>` to generate one.',
                     migrations.length );
 
@@ -28,7 +28,7 @@ export default function makeInitializer( migrationsArray ){
 
             makeMigrationRunner = function( migrations, appDBVersion ){
                 return function( event ){
-                    var IDBVersion          = event.oldVersion,
+                    var IDBVersion           = event.oldVersion,
                         migrationsToRun      = migrations.filter(
                             function( migration ){
                                 //filter just the migrations that are needed

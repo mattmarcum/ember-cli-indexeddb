@@ -7,19 +7,37 @@ module.exports = {
     2. load in migration manager via es6-module-loader
      */
 
-    install: function( options ){
+    beforeInstall: function( options, locals ){
+      console.log('migration blue print, beforeInstall');
       var Promise = System
         .import('app/migrations/migration-manager')
         .then( 
           function( migrationManager ){
-            return migrationManager.length;
+            return migrationManager.default.length;
           },
           function(){
             return 0;
           })
         .then(function( versionNumber ){
-          console.log('version number is :', versionNumber);
+          var version = versionNumber.toString(), 
+              pad = 4 - version.length;
+
+          locals.versionNumber = options.versionNumber = versionNumber;
+
+          while(pad){
+            version = '0'+version;
+            pad--;
+          }
+
+          locals.fileMap.__name__ = options.migrationFileName = version+'-'+options.entity.name
         });
       return Promise;
+    },
+    afterInstall: function( options ){
+      return this.insertIntoFile(
+        'app/migrations/migration-manager.js',
+        (options.versionNumber > 0 ? ',':'')+'"'+options.migrationFileName+'"',
+        { before: '];' }
+      );
     }
 };

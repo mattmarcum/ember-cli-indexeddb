@@ -25,7 +25,7 @@ module.exports = {
         this.project = options.project;
 
         return Promise.resolve().then(function(){
-            var blueprint = Blueprint.lookup( 'idb-initializer', {
+            var blueprint = Blueprint.lookup( 'ember-cli-indexeddb-initializer', {
                 paths: options.project.blueprintLookupPaths()
             });
 
@@ -33,7 +33,7 @@ module.exports = {
                 return blueprint.install( options );
             });
         }).then(function(){
-            var blueprint = Blueprint.lookup( 'idb-migration', {
+            var blueprint = Blueprint.lookup( 'migration', {
                 paths: options.project.blueprintLookupPaths()
             });
 
@@ -43,7 +43,7 @@ module.exports = {
                 return blueprint.install( options );
             });
         }).then(function(){
-            var blueprint = Blueprint.lookup( 'idb-adapter', {
+            var blueprint = Blueprint.lookup( 'ember-cli-indexeddb-adapter', {
                 paths: options.project.blueprintLookupPaths()
             });
 

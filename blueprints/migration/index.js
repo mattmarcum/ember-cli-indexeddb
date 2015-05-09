@@ -4,8 +4,10 @@ module.exports = {
     description: 'Create a migration for IndexedDB.',
     /*
     1. get path to migration manager
-    2. load in migration manager via es6-module-loader
-     */
+    2. load in migration manager array via es6-module-loader
+    3. each entry is a version starting from 0000
+    4. if an app has more than 10000 migrations...then gawd help you
+    */
 
     beforeInstall: function( options, locals ){
       console.log('migration blue print, beforeInstall');
@@ -29,7 +31,7 @@ module.exports = {
             pad--;
           }
 
-          locals.fileMap.__name__ = options.migrationFileName = version+'-'+options.entity.name
+          locals.fileMap.__name__ = options.migrationFileName = version+'-'+options.entity.name;
         });
       return Promise;
     },
